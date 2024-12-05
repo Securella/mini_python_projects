@@ -33,22 +33,21 @@ This project implements solutions to the **Decrypt and Recover Plaintext** and *
 
 ## 🚀 How to Run
 
-### 1️⃣ Prerequisites
+### Prerequisites
 Required libraries:
    ```bash
    pip install pycryptodome cryptography
    ```
-``
 
 ### 🔍 Open Questions and Answers
-- ***Why is it not a good idea to encrypt the plaintext with the receiver’s public key? Why generate Key1, IV, and encrypt them?***:
+***Why is it not a good idea to encrypt the plaintext with the receiver’s public key? Why generate Key1, IV, and encrypt them?***:
 Encrypting plaintext directly with a public key is not ideal due to:
 
 - Performance: Public key encryption (e.g., RSA) is slow and unsuitable for large data.
 - Size Limitations: RSA can only encrypt small chunks of data (e.g., 2048-bit RSA encrypts ~256 bytes).
 - Improved Security: Generating a unique session key (Key1) and IV for each session adds forward secrecy, ensuring that even if a key is compromised, previous sessions remain secure.
 
-- ***Does a verified MAC authenticate the sender or ensure the origin of the message?***:
+***Does a verified MAC authenticate the sender or ensure the origin of the message?***:
 No, a verified MAC alone does not authenticate the sender or guarantee the origin. Here’s why:
 
 - Message Integrity: A MAC ensures the message wasn't altered but doesn’t prove who sent it.
